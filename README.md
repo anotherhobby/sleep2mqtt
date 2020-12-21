@@ -1,6 +1,6 @@
 # sleep2mqtt - Bed Occupancy Sensor
 
-This is a prototype occupancy sensor I created for my Sleep Number bed to integrate with Home Assistant. It's written in mircopython and runs on ESP32. The sensor pushes instant state changes in addition to pressure data every 30s to MQTT for both sides of the bed. I wrote the code to use a configuration file so that it could be shared.
+sleep2mqtt is a prototype occupancy sensor I created for my Sleep Number bed to integrate with Home Assistant. The hardware cost me about $80. It's written in mircopython and runs on ESP32. The sensor pushes instant state changes in addition to pressure data every 30s to MQTT for both sides of the bed. I wrote sleep2mqtt to use a configuration file so it could be easily shared.
 
 Sleep Number beds (and other air beds) generally operate at under 1 psi. The air pressure inside the bed increases when you get in, and it decreases when you get out. That pressure data is used to determine occupancy.
 
@@ -18,7 +18,7 @@ The pressure data is not reported as the PSI of the bed. Pressure is reported as
 I got the M5 stack because the built-in screen, SD card, buttons, and other features are handy when prototyping. It's also in a nice finished case and only costs $27. Any ESP32 should work as long as 2 analog pins are available and it has an SD card reader. The display shows realtime pressure and occupancy data, and the buttons just adjust brightness. If you don't want to use a display it can be disabled in the settings file.
 
 ### **MPXV7002GP**
-The MPXV7002GP sensor is the first sensor I tried, and I got lucky that it worked for me. I replaced the Sleep Number padding with 4.5" of memory foam. This adds a lot of firmness to the bed, so my sleep number is only 35. Wired directly to the ESP32, the MPXV7002GP sensors povide a useful range for a 200 pound person with a Sleep Number up to 65. This this was just a prototype for myself, I did not research other possible sensors since this one worked. If you need to read higher pressures you'll need to do some research on a different sensor. 
+The MPXV7002GP sensor is the first sensor I tried, and I got lucky that it worked for me. I replaced the Sleep Number padding with 4.5" of memory foam. This adds a lot of firmness to the bed, so my sleep number is only 35. Wired directly to the ESP32, the MPXV7002GP sensors povide a useful range for a 200 pound person with a Sleep Number up to 65. This this was just a prototype for myself, I did not research other possible sensors since this one worked. If you need to read higher pressures you'll need to do some research on a different sensor. The MPXV7002GP has also gone up in price. When I got them they were only $16 each.
 
 ### **micro SD card (any size)**
 The SD card is needed to store the config file and a small state cache file with a moving average of historical pressure readings. The storage on the SD card does not increase with time.
