@@ -833,6 +833,11 @@ def main():
         btnB.wasPressed(buttonB_wasPressed)
         btnC.wasPressed(buttonC_wasPressed)
 
+        # # register button callbacks
+        # btnA = Pin(39, Pin.IN, handler=buttonA_wasPressed, trigger=Pin.IRQ_FALLING, debounce= 500)
+        # btnB = Pin(38, Pin.IN, handler=buttonB_wasPressed, trigger=Pin.IRQ_FALLING, debounce= 500)
+        # btnC = Pin(37, Pin.IN, handler=buttonC_wasPressed, trigger=Pin.IRQ_FALLING, debounce= 500)
+
     # create bed sensors from config
     for sensor, value in config['sensors'].items():
         s = BedSensor(

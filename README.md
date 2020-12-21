@@ -15,7 +15,7 @@ The pressure data is not reported as the PSI of the bed. Pressure is reported as
 - silicon tubing and hose barb adapters
 
 ### **ESP32**
-I got the M5 stack because the built-in screen, SD card, buttons, and other features are handy when prototyping. It's also in a nice finished case and only costs $27. Any ESP32 should work as long as 2 analog pins are available and it has an SD card reader. The display shows realtime pressure and occupancy data, and the buttons just adjust brightness. If you don't want to use a display it can be disabled in the settings file.
+I got the M5 stack because it has a built-in 320x240 LCD screen, SD card, buttons, and other features are handy when prototyping. It's also in a nice finished case and only costs $28. The 320x240 display shows realtime pressure and occupancy data, and the buttons just adjust brightness. Any ESP32 should work for sleep2mqtt as long as 2 analog pins are available for the sensors and it has an SD card reader, but the display libraries will only work on the M5. If you don't use an M5, that can be disabled in the settings file. 
 
 ### **MPXV7002GP**
 The MPXV7002GP sensor is the first sensor I tried, and I got lucky that it worked for me. I replaced the Sleep Number padding with 4.5" of memory foam. This adds a lot of firmness to the bed, so my sleep number is only 35. Wired directly to the ESP32, the MPXV7002GP sensors povide a useful range for a 200 pound person with a Sleep Number up to 65. This this was just a prototype for myself, I did not research other possible sensors since this one worked. If you need to read higher pressures you'll need to do some research on a different sensor. The MPXV7002GP has also gone up in price. When I got them they were only $16 each.
