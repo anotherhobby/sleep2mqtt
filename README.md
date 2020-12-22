@@ -59,7 +59,7 @@ At boot, the sensor is configured by reading the [config.json](config.json) file
     "log": true,
     "m5stack": true,
     "brightness": 10
-    "state_sensitivity": 4,
+    "state_sensitivity": 2,
   },
   "sensors": {
     "Bert" : {
@@ -84,7 +84,7 @@ The wifi and mqtt settings should be self-explanitory. The `mqtt_clientid` can b
 
 `brightness`: [`0-100`] brightness can be turned up and down with the buttons on the front of the M5.
 
-`state_sensitivity`: [`1-10`] sets how sensitive the sensor is to state change. 1 is least sensitive, 10 is most sensitive. This is further explained in the `delta` setting below.
+`state_sensitivity`: [`1-10`] sets how sensitive the sensor is to state change. 1 is least sensitive, 10 is most sensitive. This is further explained in the `delta` setting below. I recommend starting with the default value of 2.
 
 `sensors`: has the configuration for 1 or 2 sensors. The name of each sensor (i.e. Bert/Ernie in the config example) will be used in the naming of the sensors in Home Assistant. The friendly name for each of those sensors in Home Assistant would be `Bert Bed Occupancy` and `Ernie Bed Occupancy`.
 
@@ -115,8 +115,7 @@ The state is published in json with the following structure:
 ```
 State in Home Assistant is determined by `occupancy` being `true` or `false`. The `delta` and `ideal_pressure` values are your current settings for that sensor. The `pressure` value is the current pressure reading of the sensor (within 30s). The `avg_on` and `avg_off` values are informational. They are what the sensor has adapted the pressure values to for the bed being occupied or not. In the example above, if you figured out your `ideal_pressure` was 70, then this bed is slightly over inflated. It knows that it's not occupied and the current pressure is 55. If you put in a `delta` of 22, then it knows that on should be around 77.
 
-sleep2mqtt also pushes Home Assistant discovery topics to the `homeassistant/sensor/sleep2mqtt_name_1` topic, where `name` is the `mqtt_clientid` in your config file and the number is 1 for one sensor and 2 for the other`. These messages are discoverd by Home Assistant, and the sensors will show up under the MQTT integration in HA.
-
+sleep2mqtt also pushes Home Assistant discovery topics to the `homeassistant/sensor/sleep2mqtt_name_1` topic, where `name` is the `mqtt_clientid` in your config file and the number is 1 for one sensor and 2 for the other. These messages are discoverd by Home Assistant, and the sensors will show up under the MQTT integration in HA.
 The only quirk with the Home Assistant integration is they come in as Humidity sensors. I needed a 0-100% sensor type, and humidity worked. So, the pressure data shows up with humidity icon by default. They don't have a sensor type for this project.
 
 ## Sensor config via MQTT

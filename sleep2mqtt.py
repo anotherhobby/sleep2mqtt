@@ -35,7 +35,7 @@ class BedSensor():
             delta = the amount of pressure increase for a person
     '''
     all_sensors = []
-    sensitivity = 5
+    sensitivity = 1
     def __init__(self, name, pin, ideal_pressure, delta):
         
         BedSensor.all_sensors.append(self)
@@ -565,22 +565,33 @@ def mqtt_callback(top, msg):
             if message['command'] == 'reset':
                 for sensor in BedSensor.sensors():
                     if sensor.name == message['sensor_name']:
+                        log('mqtt reset message for {}'.format(sensor.name))
                         sensor.reset()
                         update_mqtt_attributes(sensor)
 
             if message['command'] == 'ideal_pressure':
                 for sensor in BedSensor.sensors():
                     if sensor.name == message['sensor_name']:
+                        name = sensor.name.split(' ')[0]
+                        log('mqtt change delta on {} from {} to {}'.format(
+                            name,
+                            sensor.ideal_pressure,
+                            message['value'])
+                        )  
                         # update sensor
                         sensor.ideal_pressure = message['value']
                         # save to config file
-                        name = sensor.name.split(' ')[0]
                         config['sensors'][name]['ideal_pressure'] = message['value']
                         save_config()
 
             if message['command'] == 'delta':
                 for sensor in BedSensor.sensors():
                     if sensor.name == message['sensor_name']:
+                        log('mqtt change delta on {} from {} to {}'.format(
+                            sensor.name,
+                            sensor.delta,
+                            message['value'])
+                        )                        
                         # update sensor
                         sensor.delta = message['value']
                         # save to config file
@@ -590,9 +601,26 @@ def mqtt_callback(top, msg):
 
             if message['command'] == 'settings':
                 try:
+
+                    log('mqtt change setting {} from {} to {}'.format(
+                        message['setting'],
+                        config['settings'][message['setting']],
+                        message['value'])
+                    )
+
                     config['settings'][message['setting']] = message['value']
+
                     save_config()
-                    machine.reset()
+
+                    # update bed sensor sensitivity if needed
+                    if message['setting'] == "state_sensitivity":
+
+                        BedSensor.set_sensitivity(message['value'])
+                    else:
+                        log('rebooting')
+                        time.sleep(1)
+                        machine.reset()
+                
                 except Exception as e:
                     log('error ({}) setting config with: {}'.format(e, message))
 

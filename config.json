@@ -6,7 +6,7 @@
     "mqtt_user": "mqtt_user",
     "mqtt_pass": "mqtt_pass",
     "mqtt_clientid": "bed001",
-    "state_sensitivity": 4,
+    "state_sensitivity": 2,
     "m5stack": true,
     "logging": true,
     "brightness": 10
