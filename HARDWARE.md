@@ -14,7 +14,10 @@ To keep thing sfrom getting disconnected, I keep all of the parts in a small cle
 
 ![case](img/case.jpg)
 
-The white air line is standard 1/8" silicon tubing, and it fits snugly over the harder yellow tubing. It does not leak at all and is hard to pull apart.
+The clear/white air line is standard 3/16" ID silicon tubing, and it fits snugly over the firmer yellow tubing, which is [3/16" OD fuel line](https://www.amazon.com/HobbyUnlimited-Petrol-Fuel-Tubing-Length/dp/B08912RQNJ/). The overlap connection between the hoses has a tight seal and is hard to pull apart, but single length of the yellow tubing would be ideal from the sensor all the way to the fitting. I am using silicon tubing in the middle so I could quicly disconnect the sensor to move it between my workspace and the bedroom as I was working on it.
 
 ![tubes](img/tubes.jpg)
 
+You need to cut your air lines to install this sensor. The yellow [3/16" OD / 3/32in ID fuel line](https://www.amazon.com/HobbyUnlimited-Petrol-Fuel-Tubing-Length/dp/B08912RQNJ/) connects to the [CEC36-PR0](https://ark-plas.com/item.php?i=CEC36-PR0)hose barb adapters for each side of the bed. As you can see I have the silicon tubing in the mix here, but it is unnecessary. If you ever decide to remove it, you can reconnect them with some 3/8" hose barb couplers.
+
+![tubes](img/connection.jpg)
