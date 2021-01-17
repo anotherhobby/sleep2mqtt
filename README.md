@@ -10,15 +10,15 @@ The pressure data is not reported as the PSI of the bed. Pressure is reported as
 
 ## Hardware
 - M5Stack [ESP32 Basic Core IoT Development Kit](https://m5stack.com/collections/m5-core/products/basic-core-iot-development-kit?variant=16804801937498)
-- 2x MPXV7002GP on breakout boards (analog differential pressure sensors)
+- 2x MPXV7002DP on breakout boards (analog differential pressure sensors)
 - small micro SD card
 - silicon tubing and hose barb adapters
 
 ### **ESP32**
 I got the M5 stack because it has a built-in 320x240 LCD screen, SD card, buttons, and other features are handy when prototyping. It's also in a nice finished case and only costs $28. The 320x240 display shows realtime pressure and occupancy data, and the buttons just adjust brightness. Any ESP32 should work for sleep2mqtt as long as 2 analog pins are available for the sensors and it has an SD card reader, but the display libraries will only work on the M5. If you don't use an M5, that can be disabled in the settings file. 
 
-### **MPXV7002GP**
-The MPXV7002GP sensor is the first sensor I tried, and I got lucky that it worked for me. I replaced the Sleep Number padding with 4.5" of memory foam. This adds a lot of firmness to the bed, so my sleep number is only 35. Wired directly to the ESP32, the MPXV7002GP sensors povide a useful range for a 200 pound person with a Sleep Number up to 65. This this was just a prototype for myself, I did not research other possible sensors since this one worked. If you need to read higher pressures you'll need to do some research on a different sensor. The MPXV7002GP has also gone up in price. When I got them they were only $16 each.
+### **MPXV7002DP**
+The MPXV7002DP sensor is the first sensor I tried, and I got lucky that it worked for me. I replaced the Sleep Number padding with 4.5" of memory foam. This adds a lot of firmness to the bed, so my sleep number is only 35. Wired directly to the ESP32, the MPXV7002DP sensors povide a useful range for a 200 pound person with a Sleep Number up to 65. This this was just a prototype for myself, I did not research other possible sensors since this one worked. If you need to read higher pressures you'll need to do some research on a different sensor. The MPXV7002DP has also gone up in price. When I got them they were only $16 each.
 
 ### **micro SD card (any size)**
 The SD card is needed to store the config file and a small state cache file with a moving average of historical pressure readings. The storage on the SD card does not increase with time.
